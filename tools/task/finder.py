@@ -62,6 +62,7 @@ def article_process(category=None,article=None):
     antonyms = []
     out = []
     text=[]
+    # verb=['am', 'is', 'are','was','were','if','it', 'businessman','linkedin','facebook']
     if matching:
         # for article in articles:
         #     text=article.split('.')
@@ -81,25 +82,79 @@ def article_process(category=None,article=None):
 
     
     # return articl
+        # for article in articles:
+        #     # text=articles.text
+        #     # print('text',article)
+        #     data =article.split(' ')
+
+        # tempindex = 0
+        # new syn = abc
+        
+        # data=['want high define']
+        
         for article in articles:
             # text=articles.text
             # print('text',article)
             data =article.split(' ')
-            for datas in data:
-                # print('data',datas)
+            datal=len(data)
+            newdatalist =data
+            
+            for i in range(0,datal):
+                # if verb in data:
+                #     newdatalist[i]=data
+                # else:
+                # for datas in data:
+                    # print('data',datas)  0
                 # name=wordnet.synsets(datas)
-                for syn in wordnet.synsets(datas):
+                list=[]
+                for syn in wordnet.synsets(data[i]):
                     # print('data',syn)
+                    
                     for l in syn.lemmas():
-                        ran=l.name()
-                        print('llll',ran)
+                        # print('ttttt',type(l))
                         
+                        word=l.name()
+                        # print('word',word)
+                        # break
+                        list.append(word)
+                        
+                
+
+                # print('random',randomss)
+
+                        # # newdatalist[i] =l.name()
+                if list:
+                    # print('list',list)
+                    randomss=random.choice(list)
+                    newdatalist[i] =randomss
+                # else:
+                #     print('empty')
+                        # randoms=random.choice(list)
+                        # print('randoms',randoms)
                     # synonyms.append(l.name())
                     # if l.antonyms():
-                    #     antonyms.append(l.antonyms()[0].name())
+                    # antonyms.append(l.antonyms()[0].name())
+            # for new in newdatalist:
+          
+        # print('newdatalist',newdatalist)
+        datajoin='-'.join(newdatalist)
 
+        joindata=datajoin.replace("-", " ")
+        print('newdatalist',joindata)
+
+        # for chunk in joindata.split('.'):
+        # # print('chunk',chunk)
+        #     # text =article
+        #     settings = TTSettings(do_sample=True, temperature=0.5,  min_length=1, max_length=1000)
+        #     articles = happy_tt.generate_text(chunk, args=settings)
+        #     article=articles.text
+        #     out.append(article)
+        # print('article',article)
         # print('syn',set(synonyms))
         # print('atn',set(antonyms))
+        # data[tempIndex] = newSyn
+        # list = ['a,b,c,d]
+        #list[3] = 'z'
 
     
     #  for datas in data:

@@ -1,18 +1,25 @@
+from django.shortcuts import render,  get_object_or_404, redirect
+from requests import request
 from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-
-from tools.serializers import TextEmailFinderSerializer,TextNumberFinderSerializer, DomainFinderSerializer,ImageToTextSerializer,ArticleWriterSerializer,GrammerWriterSerializer
-from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,AutomaticArticle
+from tools.serializers import TextEmailFinderSerializer,TextNumberFinderSerializer, DomainFinderSerializer,ImageToTextSerializer,ArticleWriterSerializer,GrammerWriterSerializer,WordCounterFinderSerializer,PdftoJsonSerializer
 
 
-#website to mail find(website mail scrap)
+
+def PramanikSoft(request):
+    templates='../templates/index.html'
+    return render(request, templates)
+
 class TextMailFinderAPIView(CreateAPIView):
     serializer_class = TextEmailFinderSerializer
     permission_classes = (AllowAny,)
 
+class WordCounterAPIView(CreateAPIView):
+    serializer_class = WordCounterFinderSerializer
+    permission_classes = (AllowAny,)
 
 class NumberFinderAPIView(CreateAPIView):
     serializer_class = TextNumberFinderSerializer
@@ -25,6 +32,10 @@ class DomainFinderAPIView(CreateAPIView):
 
 class ImageToTextAPIView(CreateAPIView):
     serializer_class = ImageToTextSerializer
+    permission_classes = (AllowAny,)
+
+class PDFToJsonAPIView(CreateAPIView):
+    serializer_class = PdftoJsonSerializer
     permission_classes = (AllowAny,)
 
 class AryticleWriterAPIView(CreateAPIView):

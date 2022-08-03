@@ -1,23 +1,18 @@
-from __future__ import absolute_import, unicode_literals                                                                            
-from rest_framework.response import Response                                
-from rest_framework.exceptions import NotFound
-from rest_framework import status
 
 from validate_email import validate_email
 from urlextract import URLExtract
 from PIL import Image
 import pytesseract
-from happytransformer import HappyTextToText
-from happytransformer import TTSettings
-import nltk
-nltk.download('omw-1.4')
-nltk.download('wordnet')
-from nltk.corpus import wordnet
+
+from tools.models import EmailExtract, NumberExtract, DomainExtract,AutomaticArticle,Wrodcounter
+
 import random
 import re
 
-from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,AutomaticArticle
-happy_tt = HappyTextToText("T5", "prithivida/grammar_error_correcter_v1")
+import PyPDF2
+import json
+
+
 
 def mail_process(email=None):
    
@@ -46,7 +41,33 @@ def image_process(image=None):
 
     print('text', text)
     return text 
+
+def pdf_to_process(pdf=None):
+    file={pdf.name}
+    print('file',file)
+    # split_file=file.split('')
+    # print('split_file',split_file)
+    for files in file:
+        print('files',files)
+        pdf_file = open(files, 'rb')
+        print('pdf file',pdf_file)
+        read_pdf = PyPDF2.PdfFileReader(pdf_file)
+        number_of_pages = read_pdf.getNumPages()
+        page = read_pdf.getPage(0)
+        page_content = page.extractText()
+
+        data = json.dumps(page_content)
+        print(data)
+    # pass
+def word_count_process(text=None):
+    word_split=len(text.split(' '))
+    print('word_split',word_split)
+    sentance_split=len(text.split('.'))
+    print('sentance_split',sentance_split)
+    text_length=len(text)
+    print('text_length',text_length)
     
+    return text 
 
 def article_process(category=None,article=None):
     articles=[i.article for i in AutomaticArticle.objects.all()] 
@@ -62,36 +83,9 @@ def article_process(category=None,article=None):
     antonyms = []
     out = []
     text=[]
-    # verb=['am', 'is', 'are','was','were','if','it', 'businessman','linkedin','facebook']
+
     if matching:
-        # for article in articles:
-        #     text=article.split('.')
-        #     print('article',text)
-        #     for texts in text:
-        #         settings = TTSettings(do_sample=True, temperature=0.5,  min_length=1, max_length=1000)
-        #         artic = happy_tt.generate_text(texts, args=settings)
-        #         articl=artic.text
-        #         out.append(articl)
-        #         print('article',articl)
-
-
-    # for outs in out:
-    #     print('result',outs)
-    #     return outs 
-
-
-    
-    # return articl
-        # for article in articles:
-        #     # text=articles.text
-        #     # print('text',article)
-        #     data =article.split(' ')
-
-        # tempindex = 0
-        # new syn = abc
-        
-        # data=['want high define']
-        
+      
         for article in articles:
             # text=articles.text
             # print('text',article)

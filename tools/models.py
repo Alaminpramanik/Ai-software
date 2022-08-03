@@ -32,6 +32,14 @@ class DomainExtract(models.Model):
     def __str__(self):
         return 'id - {}, - link {}'.format(self.id, self.link)
 
+class Wrodcounter(models.Model):
+    text = models.CharField(max_length=100000, verbose_name=_('text'),default=False, null=True,blank=True)
+
+    class Meta:
+        indexes = [models.Index(fields=['text' ]),]
+    
+    def __str__(self):
+        return 'id - {}, - text {}'.format(self.id, self.text)
 
 class ImageToText(models.Model):
     image = models.ImageField(upload_to ='uploads/', verbose_name=_('image'))

@@ -103,8 +103,9 @@ urlextract ==1.6.0
 tesserocr ==2.5.2
 pytesseract ==0.3.9
 happytransformer ==2.4.1
-
+PyPDF2 ==2.9.0
+jsons ==1.6.3
 nltk ==3.7
-
+whitenoise ==6.2.0
 
 

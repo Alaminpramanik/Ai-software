@@ -1,8 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,AutomaticArticle
+from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,AutomaticArticle,Wrodcounter
 
-from tools.task.finder import mail_process, number_process,domain_process,image_process, article_process, grammer_process
+from tools.task.finder import mail_process, number_process,domain_process,image_process,pdf_to_process ,article_process, grammer_process,word_count_process
+from tools.task.generator import  article_process
 
 class TextEmailFinderSerializer(ModelSerializer):
     email=serializers.CharField(max_length=100000, min_length=None)
@@ -64,8 +65,40 @@ class ImageToTextSerializer(ModelSerializer):
 
         return validated_data
 
+class PdftoJsonSerializer(ModelSerializer):
+    file = serializers.FileField(max_length=None, use_url=True, allow_null=True, required=False)
+    json=serializers.CharField(read_only=True)
+    class Meta:
+        model = Wrodcounter
+        fields = ['file','json']
+
+    def create(self, validated_data):
+        pdf=validated_data.get('file')
+        # print('pdf',pdf)
+        json = pdf_to_process(pdf)
+        # print('file',pdf)
+    
+        validated_data['file'] = pdf
+        validated_data['text'] = json
+
+        return validated_data
+
+class WordCounterFinderSerializer(ModelSerializer):
+    text=serializers.CharField(max_length=100000, min_length=None)
+    class Meta:
+        model = Wrodcounter
+        fields = ['text']
+
+    def create(self, validated_data):
+        text=validated_data.get('text')
+        text = word_count_process(text)
+    
+        validated_data['text'] = text
+
+        return validated_data
 
 class ArticleWriterSerializer(ModelSerializer):
+    article=serializers.CharField(max_length=100000, min_length=None)
     class Meta:
         model = AutomaticArticle
         fields = ['category','article']

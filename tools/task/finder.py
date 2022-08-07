@@ -4,7 +4,7 @@ from urlextract import URLExtract
 from PIL import Image
 import pytesseract
 
-from tools.models import EmailExtract, NumberExtract, DomainExtract,AutomaticArticle,Wrodcounter
+from tools.models import EmailExtract, NumberExtract, DomainExtract,Content,Wrodcounter
 
 import random
 import re
@@ -70,7 +70,7 @@ def word_count_process(text=None):
     return text 
 
 def article_process(category=None,article=None):
-    articles=[i.article for i in AutomaticArticle.objects.all()] 
+    articles=[i.article for i in Content.objects.all()] 
 
     # print('articles',articles)
 

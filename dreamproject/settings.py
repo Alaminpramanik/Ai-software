@@ -173,4 +173,4 @@ STATICFILES_DIRS = [
 # ]
 # STATIC_ROOT = 'staticfiles'
 # STATICFILES_STORAGE = 'stylish.storage.S3Storage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

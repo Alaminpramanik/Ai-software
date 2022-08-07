@@ -51,22 +51,21 @@ class ImageToText(models.Model):
         return 'id - {}, - image {}'.format(self.id, self.image)
 
 
-class ArticleCategory(models.Model):
-    category=models.CharField(max_length=100, verbose_name=_('category'),default=False,null=True,blank=True)
-    keyword=models.CharField(max_length=100, verbose_name=_('keyword'),default=False, null=True,blank=True)
+class ContentKeyword(models.Model):
+    keyword=models.CharField(max_length=100, verbose_name=_('keyword'), null=True,blank=True)
     class Meta:
-        indexes = [models.Index(fields=['category' ]),]
+        indexes = [models.Index(fields=['keyword' ]),]
     
     def __str__(self):
-        return 'id - {}, - category {}'.format(self.id, self.category)
+        return 'id - {}, - keyword {}'.format(self.id, self.keyword)
 
-class AutomaticArticle(models.Model):
-    category = models.ForeignKey(to='tools.ArticleCategory', verbose_name=_('category'),default=False, related_name='contacts',
+class Content(models.Model):
+    keyword = models.ForeignKey(to='tools.ContentKeyword', verbose_name=_('keyword'),related_name='contacts',
                                     on_delete=models.CASCADE)
-    article = models.CharField(max_length=300, verbose_name=_('article'),default=False, null=True,blank=True)
+    content = models.CharField(max_length=300, verbose_name=_('article'),null=True,blank=True)
 
     class Meta:
-        indexes = [models.Index(fields=['article' ]),]
+        indexes = [models.Index(fields=['content' ]),]
     
     def __str__(self):
-        return 'id - {}, - category {}'.format(self.id, self.category)
+        return 'id - {}, - keyword {}'.format(self.id, self.keyword)

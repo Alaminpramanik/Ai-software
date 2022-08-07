@@ -4,14 +4,21 @@ from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.renderers import TemplateHTMLRenderer
 
 from tools.serializers import TextEmailFinderSerializer,TextNumberFinderSerializer, DomainFinderSerializer,ImageToTextSerializer,ArticleWriterSerializer,GrammerWriterSerializer,WordCounterFinderSerializer,PdftoJsonSerializer
 
 
 
 def PramanikSoft(request):
-    templates='../templates/index.html'
+    templates='../templates/textdomfind.html'
     return render(request, templates)
+
+def RewriteAPIView(request):
+ 
+    templates = '../templates/rewrite.html'
+    return render(request, templates)
+
 
 class TextMailFinderAPIView(CreateAPIView):
     serializer_class = TextEmailFinderSerializer

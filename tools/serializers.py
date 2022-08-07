@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,AutomaticArticle,Wrodcounter
+from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,Content,Wrodcounter,ContentKeyword
 
 from tools.task.finder import mail_process, number_process,domain_process,image_process,pdf_to_process ,article_process, grammer_process,word_count_process
 from tools.task.generator import  article_process
@@ -98,18 +98,21 @@ class WordCounterFinderSerializer(ModelSerializer):
         return validated_data
 
 class ArticleWriterSerializer(ModelSerializer):
-    article=serializers.CharField(max_length=100000, min_length=None)
+    keyword=serializers.CharField(max_length=100, min_length=None)
+    content=serializers.CharField(max_length=100000, min_length=None)
+
     class Meta:
-        model = AutomaticArticle
-        fields = ['category','article']
+        model = Content
+        fields = ['keyword','content']
 
     def create(self, validated_data):
-        category=validated_data.get('category')
-        article=validated_data.get('article')
-        article = article_process(category,article)
-        print('article',article)
+        keyword=validated_data.get('keyword')
+        # print('keyword',keyword)
+        content=validated_data.get('content')
+        # print('content',content)
+        content = article_process(keyword,content)
     
-        validated_data['article'] = article
+        validated_data['content'] = content
 
         return validated_data
 
@@ -117,7 +120,7 @@ class ArticleWriterSerializer(ModelSerializer):
 class GrammerWriterSerializer(ModelSerializer):
     article=serializers.CharField(max_length=100000, min_length=None)
     class Meta:
-        model = AutomaticArticle
+        model = Content
         fields = ['article']
 
     def create(self, validated_data):

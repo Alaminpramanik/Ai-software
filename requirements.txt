@@ -102,6 +102,7 @@ dnspython ==2.2.1
 urlextract ==1.6.0
 tesserocr ==2.5.2
 pytesseract ==0.3.9
+tesseract-ocr ==0.0.1
 happytransformer ==2.4.1
 PyPDF2 ==2.9.0
 jsons ==1.6.3

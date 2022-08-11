@@ -111,8 +111,10 @@ class ArticleWriterSerializer(ModelSerializer):
         content=validated_data.get('content')
         # print('content',content)
         content = article_process(keyword,content)
-    
+        print('content', content)
         validated_data['content'] = content
+        # validated_data['content'] = content
+
 
         return validated_data
 

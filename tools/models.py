@@ -62,7 +62,7 @@ class ContentKeyword(models.Model):
 class Content(models.Model):
     keyword = models.ForeignKey(to='tools.ContentKeyword', verbose_name=_('keyword'),related_name='contacts',
                                     on_delete=models.CASCADE)
-    content = models.CharField(max_length=300, verbose_name=_('article'),null=True,blank=True)
+    content = models.CharField(max_length=1000, verbose_name=_('article'),null=True,blank=True)
 
     class Meta:
         indexes = [models.Index(fields=['content' ]),]

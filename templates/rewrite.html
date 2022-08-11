@@ -156,15 +156,8 @@
 				<div class="col-md-12 col-12 pt-5">
 					<h5 class="title">Re-write result</h5>
 				</div>
-				<div class="col-md-12 col-12">
-					<ul class="list-group">
-						<li class="list-group-item-email">
-						<p id="rewrite">
-							In this article, we’ll talk about how much real estate leads to cost and whether it is a wise decision to purchase them or not.
-						</p>
-						</li>
-						
-					</ul>
+				<div class="col-md-12 col-12" id="rewrites">
+					
 				</div>
 				<div class="col-md-12 col-12 pt-3">
 					<button type="submit" class="pix-btn text-mail-finder-btn" >
@@ -304,7 +297,7 @@
 
     <script>
       $(document).ready(function () {
-         GetRewriteProduct()
+         GetRewriteContent()
       })
       function SubmitButton(){
         
@@ -317,10 +310,10 @@
           'content':content
         }
         // console.log('data',data)
-        GetRewriteProduct(input_data)
+        GetRewriteContent(input_data)
       }
       const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-      function GetRewriteProduct(input_data){
+      function GetRewriteContent(input_data){
         var url = 'http://127.0.0.1:8000/article/'
         $.ajax({
           url:url,
@@ -329,10 +322,26 @@
           dataType: "json",
           data: input_data,
           cached: true,
-          success: function(data){
-            console.log('data', data)
+          success: function(res){
+            $('#rewrites').append(setRewriteContent(res))
           },
          })
+      }
+
+      function setRewriteContent(data){
+        console.log('result',data.content)
+        let html_str = `
+          <ul class="list-group">
+              <li class="list-group-item-email">
+              <p>
+                `+data.content+`
+              </p>
+              </li>
+              
+            </ul>
+
+        `
+        return html_str;
       }
     </script>
   </body>

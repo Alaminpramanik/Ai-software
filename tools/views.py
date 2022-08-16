@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
 
-from tools.serializers import TextEmailFinderSerializer,TextNumberFinderSerializer, DomainFinderSerializer,ImageToTextSerializer,ArticleWriterSerializer,GrammerWriterSerializer,WordCounterFinderSerializer,PdftoJsonSerializer
+from tools.serializers import ContentWriterSerializer, TextEmailFinderSerializer,TextNumberFinderSerializer, DomainFinderSerializer,ImageToTextSerializer,ArticleWriterSerializer,GrammerWriterSerializer,WordCounterFinderSerializer,PdftoJsonSerializer
 
 
 
@@ -15,10 +15,17 @@ def PramanikSoft(request):
     return render(request, templates)
 
 def RewriteAPIView(request):
- 
     templates = '../templates/rewrite.html'
     return render(request, templates)
 
+
+def ContentwriteAPIView(request):
+    templates = '../templates/content.html'
+    return render(request, templates)
+
+class ContentWriterAPIView(CreateAPIView):
+    serializer_class=ContentWriterSerializer
+    permission_classes = (AllowAny,)
 
 class TextMailFinderAPIView(CreateAPIView):
     serializer_class = TextEmailFinderSerializer

@@ -11,7 +11,8 @@ urlpatterns = [
    path('pdftojson/', views.PDFToJsonAPIView.as_view(), name='pdf-to-json'),
    path('article/', views.AryticleWriterAPIView.as_view(), name='image-to-text'),
    path('grammer/', views.GrammerWriterAPIView.as_view(), name='image-to-text'),
+   path('contentwrite/', views.ContentWriterAPIView.as_view(), name='content=write'),
    path('rewrite/', views.RewriteAPIView, name='rewrite'),
-
+   path('content/', views.ContentwriteAPIView, name='content'),
    path('', views.PramanikSoft, name='home'),
 ]

@@ -147,9 +147,6 @@
 				</div>
 
 				<div class="col-md-12 col-12 pt-3">
-					<textarea type="text" id="content" placeholder="Submit Your Content"></textarea>
-				</div>
-				<div class="col-md-12 col-12 pt-3">
 					<button type="submit" class="pix-btn input-submit" onclick="SubmitButton()">Submit</button>
 				</div>
 
@@ -302,12 +299,10 @@
       function SubmitButton(){
         
         keyword=document.getElementById('keyword').value
-        content=document.getElementById('content').value
-        // console.log('keyword',keyword)
-        // console.log('content',content)
+  
+        console.log('keyword',keyword)
         input_data={
-          'keyword':keyword,
-          'content':content
+          'keyword':keyword
         }
 
         // console.log('data',data)
@@ -315,7 +310,8 @@
       }
       const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
       function GetRewriteContent(input_data){
-        var url = 'http://127.0.0.1:8000/article/'
+        console.log('input_data',input_data)
+        var url = 'http://127.0.0.1:8000/contentwrite/'
         $.ajax({
           url:url,
           method: 'POST',
@@ -335,7 +331,7 @@
           <ul class="list-group">
               <li class="list-group-item-email">
               <p>
-                `+data.content+`
+                `+data.keyword+`
               </p>
               </li>
               

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText,Content,Wrodcounter,ContentKeyword
 
 from tools.task.finder import mail_process, number_process,domain_process,image_process,pdf_to_process ,article_process, grammer_process,word_count_process
-from tools.task.generator import  article_process
+from tools.task.generator import  article_process, content_write
 
 class TextEmailFinderSerializer(ModelSerializer):
     email=serializers.CharField(max_length=100000, min_length=None)
@@ -118,6 +118,23 @@ class ArticleWriterSerializer(ModelSerializer):
 
         return validated_data
 
+
+class ContentWriterSerializer(ModelSerializer):
+    keyword=serializers.CharField(max_length=100, min_length=None)
+
+    class Meta:
+        model = ContentKeyword
+        fields = ['keyword']
+
+    def create(self, validated_data):
+        keyword=validated_data.get('keyword')
+        # print('keyword',keyword)
+      
+        keyword = content_write(keyword)
+        # print('keyword', keyword)
+        validated_data['keyword'] = keyword
+
+        return validated_data
 
 class GrammerWriterSerializer(ModelSerializer):
     article=serializers.CharField(max_length=100000, min_length=None)

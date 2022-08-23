@@ -11,7 +11,7 @@ from tools.serializers import ContentWriterSerializer, TextEmailFinderSerializer
 
 
 def PramanikSoft(request):
-    templates='../templates/textdomfind.html'
+    templates='../templates/imgtotext.html'
     return render(request, templates)
 
 def RewriteAPIView(request):
@@ -56,6 +56,9 @@ class AryticleWriterAPIView(CreateAPIView):
     serializer_class = ArticleWriterSerializer
     permission_classes = (AllowAny,)
 
+# class AtricleGenerateListAPIView(ListAPIView):
+#     serializer_class = GrammerWriterSerializer
+#     permission_classes = (AllowAny,)
 
 class GrammerWriterAPIView(CreateAPIView):
     serializer_class = GrammerWriterSerializer

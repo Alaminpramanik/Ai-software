@@ -5,7 +5,7 @@ from tools.models import Content,ContentKeyword
 import requests
 from bs4 import BeautifulSoup
 import random
-
+from tools.task.scrap import get_data
 
 def article_process(keyword=None,content=None):
     keyword_filter = ContentKeyword.objects.filter(keyword=keyword).first()
@@ -41,38 +41,49 @@ def article_process(keyword=None,content=None):
    
     return contents
 
-def content_write(keyword=None):
-    text = ''
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
-    }
-    url='https://search.aol.com/aol/search?q='+keyword
-    try:
-        res = requests.get(url, headers=headers, timeout=30)
-        text += res.text
-    except Exception as e:
-        print('Connection Aborted! contact', e)
+def content_write(keyword=None,category=None,str_ref=None):
+    content=get_data(keyword)
+    # print(keyword)
+   
+    print('textsc contents',content)
+    link=content.find_all({"a"})
+    # for links in link:
+    #     print('body link',links.text)
+    # links=set(content.find_all('a', attrs={'class':'ls-05'})) ##aol
+    for anchor in link:
+        url = anchor.attrs["href"] if "href" in anchor.attrs else ''
+        content=get_data(url)
+
+        # print('textsc contents',content)
+
+    # textsc=set(content.find_all('p', attrs={'class':'lh-16'})) ##aol  
+    # # rndom_choice=textsc.text
+    # textsc=set(content.find_all('div', attrs={'class':'compImageProfile'}))
+    # # textsc=set(content.find_all('div', attrs={'class':'compContainerUL'}))
+
+    # # textsc=set(content.find_all('div', attrs={'class':'compText'}))
+
+    # # textsc=set(content.find_all('div', attrs={'class':'compContainerExp'}))
+
+    # # print('textsc',textsc)
+    # # textsc=content.find_all({"class": 'compContainerUL'})
+    # # print('textsc rndom_choice',rndom_choice)
     
-    # print('text ', text)
-    content = BeautifulSoup(text, 'html.parser')
+    # list=[]
+    # for teee in textsc:
+    #     list.append(teee)
+    #     # return keyword
+    #     # keyword=teee.text
+    #     # print('list content',list)
+    #     # content_text=teee.text
+    #     # keyword=article_process(keyword=keyword,content=content_text)
 
-    # print('textsc contents',content)
-    textsc=set(content.find_all('p', attrs={'class':'lh-16'}))
-    # rndom_choice=textsc.text
-    # textsc=content.find_all({"class": "'OrganicTextContentSpan'"})
-    # print('textsc rndom_choice',rndom_choice)
-    
-    list=[]
-    for teee in textsc:
-        list.append(teee)
-        # return keyword
-        # print('list content',list)
-    if list:
-        data=random.choice(list)
-        print('data',data)
-        content_text=data.text
-        print('content_text',content_text)
-        keyword=article_process(keyword=keyword,content=content_text)
+    # if list:
+    #     data=random.choice(list)
+    #     # print('data',data)
+    #     keyword=data.text
+    #     # print('content_text',content_text)
+    #     # keyword=article_process(keyword=keyword,content=content_text)
 
 
-    return keyword
+    # return keyword

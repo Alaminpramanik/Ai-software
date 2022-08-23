@@ -76,11 +76,11 @@ def content_process(content=None):
     
     for send in sen:
         datal=len(sen)
-        if 'CD' in send or 'CC' in send or 'EX' in send or 'DT' in send  or 'FW' in send or 'IN' in send or 'LS' in send or 'MD' in send or 'NNP' in send or 'NNPS' in send or 'PDT' in send or 'POS' in send or 'PRP' in send or 'PRP$' in send or 'RP' in send or 'TO' in send or 'UH' in send or 'VBG' in send or 'VBD' in send or 'VBN' in send or 'VBP' in send or  'VBZ' in send or 'WDT' in send or '.' in send or 'WRB' in send:
+        if 'CD' in send or 'CC' in send or 'NNS' in send or 'NN' in send or 'EX' in send or 'DT' in send  or 'FW' in send or 'IN' in send or 'LS' in send or 'MD' in send or 'NNP' in send or 'NNPS' in send or 'PDT' in send or 'POS' in send or 'PRP' in send or 'PRP$' in send or 'RP' in send or 'TO' in send or 'UH' in send or 'VBG' in send or 'VBD' in send or 'VBN' in send or 'VBP' in send or  'VBZ' in send or 'WDT' in send or '.' in send or 'WRB' in send:
             data=send[0]
             newdatalist.append(data)
 
-        if 'NNS' in send or 'NN' in send or 'VB' in send or 'JJ' in send or 'JJR' in send or 'RB' in send or 'RBR' in send or 'RBS' in send or 'JJS' in send:
+        if 'JJ' in send or 'JJR' in send or 'RB' in send or 'VB' in send or 'RBR' in send or 'RBS' in send or 'JJS' in send:
             list=[]
             data=send[0]
             # print('data',data)

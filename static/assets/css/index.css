@@ -51,6 +51,10 @@
 
 .input, textarea, select {
 	background-color: white;
+	
+}
+.output-text{
+	margin-top: 10px;
 }
 .download-btn{
 	border: 0;
@@ -79,6 +83,7 @@
 .rewrite{
 	margin-top:-160px
 }
+
 
 .text-mail-finder-btn{
 	border: 0;

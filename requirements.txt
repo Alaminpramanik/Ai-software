@@ -108,5 +108,6 @@ PyPDF2 ==2.9.0
 jsons ==1.6.3
 nltk ==3.7
 whitenoise ==6.2.0
+django-ckeditor ==6.5.0
 
 

@@ -1062,7 +1062,6 @@ input,
 textarea,
 select {
 	background: #fdfafa;
-	padding: 15px 30px;
 	border: 1px solid #efe7e7;
 	/* margin-bottom: 30px; */
 	border-radius: 30px;

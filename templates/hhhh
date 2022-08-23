@@ -1,0 +1,58 @@
+function setRewriteContent(data){
+        console.log('result',data.content)
+        
+        let html_str = `
+            <div class="text-editor-header">
+                <button type="button" class="btn" id="editor-btn" data-element="bold">
+                  <i class="fa fa-bold"></i>
+                </button>
+                <button type="button" class="btn"id="editor-btn" data-element="italic">
+                  <i class="fa fa-italic"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="underline">
+                  <i class="fa fa-underline"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="insertunorderlist">
+                  <i class="fa fa-list-ul"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="insertorderlist">
+                  <i class="fa fa-list-ol"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="createlink">
+                  <i class="fa fa-link"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="justifyleft">
+                  <i class="fa fa-align-left"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="justifycenter">
+                  <i class="fa fa-align-center"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="justifyright">
+                  <i class="fa fa-align-right"></i>
+                </button>
+                <button type="button" class="btn" id="editor-btn" data-element="insertimages">
+                  <i class="fa fa-image"></i>
+                </button>
+                <button type="button" class="editor-btn" data-element="insertvideo">
+                  <i class="fa fa-video"></i>
+                </button>
+                <div>
+                  <textarea type="text" class="output-text">
+                    `+data.keyword+`
+                  </textarea>
+                <div>
+              </div>
+
+        `
+        return html_str;
+      }
+      const element=document.querySelector('#editor-btn')
+
+        console.log('element',element)
+        element.forEach(element=>{
+          element.addEventListener('click',()=>{
+            let command=element.dataset['element'];
+
+            document.execCommand(command, false,null)
+          })
+        })

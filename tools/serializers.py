@@ -121,20 +121,26 @@ class ArticleWriterSerializer(ModelSerializer):
 
 class ContentWriterSerializer(ModelSerializer):
     keyword=serializers.CharField(max_length=100, min_length=None)
+    category=serializers.CharField(max_length=100, min_length=None)
+    str_ref=serializers.CharField(max_length=100, min_length=None)
 
     class Meta:
         model = ContentKeyword
-        fields = ['keyword']
+        fields = ['keyword','category','str_ref']
 
     def create(self, validated_data):
         keyword=validated_data.get('keyword')
+        category=validated_data.get('category')
+        str_ref=validated_data.get('str_ref')
+
         # print('keyword',keyword)
-      
-        keyword = content_write(keyword)
+        keyword = content_write(keyword,category,str_ref)
         # print('keyword', keyword)
         validated_data['keyword'] = keyword
 
         return validated_data
+
+
 
 class GrammerWriterSerializer(ModelSerializer):
     article=serializers.CharField(max_length=100000, min_length=None)

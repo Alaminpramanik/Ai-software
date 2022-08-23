@@ -1,6 +1,7 @@
+from django.utils.translation import ugettext_lazy as _
 from distutils.command.upload import upload
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from ckeditor.fields import RichTextField
 
 from core.models import BaseModel
 
@@ -53,19 +54,39 @@ class ImageToText(models.Model):
 
 class ContentKeyword(models.Model):
     keyword=models.CharField(max_length=100, verbose_name=_('keyword'), null=True,blank=True)
+    category=models.CharField(max_length=100, verbose_name=_('category'), null=True,blank=True)
+    description=RichTextField()
+
     class Meta:
         indexes = [models.Index(fields=['keyword' ]),]
     
     def __str__(self):
         return 'id - {}, - keyword {}'.format(self.id, self.keyword)
 
+
 class Content(models.Model):
     keyword = models.ForeignKey(to='tools.ContentKeyword', verbose_name=_('keyword'),related_name='contacts',
                                     on_delete=models.CASCADE)
-    content = models.CharField(max_length=1000, verbose_name=_('article'),null=True,blank=True)
+    content = RichTextField()
+    checked = models.BooleanField(verbose_name=_('Checked'), default=False, null=True, blank=True)
 
     class Meta:
         indexes = [models.Index(fields=['content' ]),]
     
     def __str__(self):
         return 'id - {}, - keyword {}'.format(self.id, self.keyword)
+
+class Reference(models.Model):
+    content = models.ForeignKey(to='tools.Content', verbose_name=_('content'),related_name='reference',
+                                    on_delete=models.CASCADE)
+
+    ref_str = models.CharField(verbose_name=_('ref_str'), max_length=100, null=True, blank=True)
+    
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['ref_str', 'content', ]),
+        ]
+    
+    def __str__(self):
+        return 'id - {}, ref_str - {}'.format(self.id, self.ref_str)

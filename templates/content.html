@@ -299,13 +299,17 @@
       function SubmitButton(){
         
         keyword=document.getElementById('keyword').value
-  
+        let datetime_str = Date.parse(Date().toString())
+        let category='blog'
         console.log('keyword',keyword)
         input_data={
-          'keyword':keyword
+          'keyword':keyword,
+          'category': category,
+          'str_ref':datetime_str
+
         }
 
-        // console.log('data',data)
+        console.log('data',input_data)
         GetRewriteContent(input_data)
       }
       const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -340,6 +344,8 @@
         `
         return html_str;
       }
+
+      
     </script>
   </body>
 </html>

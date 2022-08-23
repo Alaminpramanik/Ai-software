@@ -137,34 +137,36 @@
       <!--==========================-->
       <section>
         <div class="container main-body">
-			<div class="row">
-				<div class="col-md-12 col-12">
-					<h1>Write perfectly your content </h1>
-				</div>
-				<div class="col-md-12 col-12">
-          {% csrf_token %}
-					<input type="text" id="keyword" placeholder="Submit kour kewword or topic">
-				</div>
+			    <div class="row">
+				    <div class="col-md-12 col-12">
+					    <h1>Write perfectly your content </h1>
+				    </div>
+            <div class="col-md-12 col-12">
+              {% csrf_token %}
+              <input type="text" id="keyword" placeholder="Submit kour kewword or topic">
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <textarea type="text" id="content" placeholder="Submit Your Content"></textarea>
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <button type="submit" class="pix-btn input-submit" onclick="SubmitButton()">Submit</button>
+            </div>
 
-				<div class="col-md-12 col-12 pt-3">
-					<textarea type="text" id="content" placeholder="Submit Your Content"></textarea>
-				</div>
-				<div class="col-md-12 col-12 pt-3">
-					<button type="submit" class="pix-btn input-submit" onclick="SubmitButton()">Submit</button>
-				</div>
-
-				<div class="col-md-12 col-12 pt-5">
-					<h5 class="title">Re-write result</h5>
-				</div>
-				<div class="col-md-12 col-12" id="rewrites">
-					
-				</div>
-				<div class="col-md-12 col-12 pt-3">
-					<button type="submit" class="pix-btn text-mail-finder-btn" >
-					Download
-					</button>
-				</div>
-			</div>
+            <div class="col-md-12 col-12 pt-5">
+              <h5 class="title">Re-write result</h5>
+            </div>
+            <div class="col-md-12 col-12" id="rewrites">
+              
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <button type="submit" class="pix-btn text-mail-finder-btn" >
+              Download
+              </button>
+            </div>
+			    </div>
         </div>
       </section>
     </div>
@@ -332,15 +334,43 @@
       function setRewriteContent(data){
         console.log('result',data.content)
         let html_str = `
-          <ul class="list-group">
-              <li class="list-group-item-email">
-              <p>
-                `+data.content+`
-              </p>
-              </li>
-              
-            </ul>
+              <div class="text-editor-header">
+                <button type="button" class="btn" data-element="bold">
+                  <i class="fa fa-bold"></i>
+                </button>
+                <button type="button" class="btn" data-element="italic">
+                  <i class="fa fa-italic"></i>
+                </button>
+                <button type="button" class="btn" data-element="underline">
+                  <i class="fa fa-underline"></i>
+                </button>
+                <button type="button" class="btn" data-element="insertunorderlist">
+                  <i class="fa fa-list-ul"></i>
+                </button>
+                <button type="button" class="btn" data-element="insertorderlist">
+                  <i class="fa fa-list-ol"></i>
+                </button>
+                <button type="button" class="btn" data-element="createlink">
+                  <i class="fa fa-link"></i>
+                </button>
+                <button type="button" class="btn" data-element="justifyleft">
+                  <i class="fa fa-align-left"></i>
+                </button>
+                <button type="button" class="btn" data-element="justifycenter">
+                  <i class="fa fa-align-center"></i>
+                </button>
+                <button type="button" class="btn" data-element="justifyright">
+                  <i class="fa fa-align-right"></i>
+                </button>
+                <button type="button" class="btn" data-element="insertimages">
+                  <i class="fa fa-image"></i>
+                </button>
+                <button type="button" class="btn" data-element="insertvideo">
+                  <i class="fa fa-video"></i>
+                </button>
+                <textarea type="text" id="content" placeholder="Submit Your Content">`+data.content+`</textarea>
 
+              </div>
         `
         return html_str;
       }

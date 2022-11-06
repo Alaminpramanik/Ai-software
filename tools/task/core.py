@@ -55,8 +55,10 @@ def keyword_process(keyword=None):
         # print('keyword write',keyword)
     return keyword
 
-def content_process(content=None):
-    print('content_process',content)
+def content_process(keyword=None, content=None, str_ref=None):
+    print('content_process......',str_ref)
+    print('content_process......',content)
+    print('keyword....',keyword)
     content_list=[]
     
     # for contents in range(10):
@@ -100,5 +102,5 @@ def content_process(content=None):
     content=joindata.replace("_", " ")
     # content_list.append(content)
     # print('len',len(content_list))
-        # print('content write',content)
-    return content
+    print('content write',content)
+    # return content

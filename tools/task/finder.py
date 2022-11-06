@@ -39,7 +39,32 @@ def image_process(image=None):
     images=pytesseract.image_to_string(images,  lang="eng")
     text = images.replace("\r\n", " ").replace("\n", " ").replace("\r", " ").replace('\f', ' ')
 
-    print('text', text)
+    # chardet_type = None
+    # try:
+    #     # First try the fast C implementation.
+    #     #  PyPI package: cchardet
+    #     import cchardet
+    #     def chardet_dammit(s):
+    #         if isinstance(s, str):
+    #             return None
+    #         return cchardet.detect(s)['encoding']
+    # except ImportError:
+    #     try:
+    #         # Fall back to the pure Python implementation
+    #         #  Debian package: python-chardet
+    #         #  PyPI package: chardet
+    #         import chardet
+    #         def chardet_dammit(s):
+    #             if isinstance(s, str):
+    #                 return None
+    #             return chardet.detect(s)['encoding']
+    #         #import chardet.constants
+    #         #chardet.constants._debug = 1
+    #     except ImportError:
+    #         # No chardet available.
+    #         def chardet_dammit(s):
+    #             return None
+        # print('text', text)
     return text 
 
 def pdf_to_process(pdf=None):

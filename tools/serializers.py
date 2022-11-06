@@ -5,6 +5,8 @@ from tools.models import EmailExtract, NumberExtract, DomainExtract, ImageToText
 from tools.task.finder import mail_process, number_process,domain_process,image_process,pdf_to_process ,article_process, grammer_process,word_count_process
 from tools.task.generator import  article_process, content_write
 
+
+
 class TextEmailFinderSerializer(ModelSerializer):
     email=serializers.CharField(max_length=100000, min_length=None)
     class Meta:
@@ -19,6 +21,8 @@ class TextEmailFinderSerializer(ModelSerializer):
 
         return validated_data
 
+
+
 class TextNumberFinderSerializer(ModelSerializer):
     phone=serializers.CharField(max_length=100000, min_length=None)
     class Meta:
@@ -32,6 +36,8 @@ class TextNumberFinderSerializer(ModelSerializer):
         validated_data['phone'] = phone
 
         return validated_data
+
+
 
 class DomainFinderSerializer(ModelSerializer):
     link=serializers.CharField(max_length=100000, min_length=None)
@@ -65,6 +71,8 @@ class ImageToTextSerializer(ModelSerializer):
 
         return validated_data
 
+
+
 class PdftoJsonSerializer(ModelSerializer):
     file = serializers.FileField(max_length=None, use_url=True, allow_null=True, required=False)
     json=serializers.CharField(read_only=True)
@@ -83,6 +91,8 @@ class PdftoJsonSerializer(ModelSerializer):
 
         return validated_data
 
+
+
 class WordCounterFinderSerializer(ModelSerializer):
     text=serializers.CharField(max_length=100000, min_length=None)
     class Meta:
@@ -96,6 +106,8 @@ class WordCounterFinderSerializer(ModelSerializer):
         validated_data['text'] = text
 
         return validated_data
+
+
 
 class ArticleWriterSerializer(ModelSerializer):
     keyword=serializers.CharField(max_length=100, min_length=None)

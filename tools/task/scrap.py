@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def get_data(keyword=None,url=None):
+
     if keyword:
         url='https://search.yahoo.com/search;_ylt=Awr.1ZuWtP9i8EwDWtxDDWVH;_ylc=X1MDMTE5NzgwNDg2NwRfcgMyBGZyAwRmcjIDcDpzLHY6c2ZwLG06c2EtZ3Atc2VhcmNoBGdwcmlkA1o3QlRfR25xUjZTbWR5TFRiYV90VUEEbl9yc2x0AzAEbl9zdWdnAzEEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzEEcHFzdHIDBHBxc3RybAMwBHFzdHJsAzI3BHF1ZXJ5A2hvdyUyMHRvJTIwbWFrZSUyMG1vbmV5JTIwaW4lMjBvbmxpbmUEdF9zdG1wAzE2NjA5MjUwODEEdXNlX2Nhc2UD?p='+keyword
     else:

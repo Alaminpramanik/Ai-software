@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class GmapConfig(AppConfig):
-    name = 'gmap'
+class ToolsConfig(AppConfig):
+    name = 'tools'

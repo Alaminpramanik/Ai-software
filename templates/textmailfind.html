@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <title>Text To Mail Finder</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/assets/img/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/assets/img/fav/favicon-16x16.png">
+    <link rel="mask-icon" href="../static/assets/img/fav/safari-pinned-tab.svg" color="#fa7070">
+
+    <meta name="msapplication-TileColor" content="#fa7070">
+    <meta name="theme-color" content="#fa7070">
+
+    <!-- Dependency Styles -->
+    <link rel="stylesheet" href="../static/dependencies/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/fontawesome/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/swiper/css/swiper.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/wow/css/animate.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/magnific-popup/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/components-elegant-icons/css/elegant-icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/dependencies/simple-line-icons/css/simple-line-icons.css" type="text/css">
+
+
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="../static/assets/css/app.css" type="text/css" />
+    <link rel="stylesheet" href="../static/assets/css/index.css" type="text/css" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&family=Satisfy&display=swap"rel="stylesheet"/>
+  </head>
+
+  <body id="home-version-1" class="home-version-1" data-style="default">
+    <a href="#main_content" data-type="section-switch" class="return-to-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  
+    <div class="page-loader">
+      <div class="loader">
+        <!-- Loader -->
+        <div class="blobs">
+          <div class="blob-center"></div>
+          <div class="blob"></div>
+          <div class="blob"></div>
+          <div class="blob"></div>
+          <div class="blob"></div>
+          <div class="blob"></div>
+          <div class="blob"></div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+  
+      </div>
+    </div><!-- /.page-loader -->
+  
+    <div id="main_content">
+  
+  
+      <!--=========================-->
+      <!--=        Navbar         =-->
+      <!--=========================-->
+      <header class="site-header header_trans-fixed" data-top="992">
+        <div class="container">
+          <div class="header-inner">
+            <div class="toggle-menu">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <!-- /.toggle-menu -->
+  
+            <div class="site-mobile-logo">
+              <a href="index.html" class="logo">
+                <img src="../static/assets/img/lo.png" alt="site logo" class="main-logo">
+                <img src="../static/assets/img/lo.png" alt="site logo" class="sticky-logo">
+              </a>
+            </div>
+  
+            <nav class="site-nav">
+              <div class="close-menu">
+                <span>Close</span>
+                <i class="ei ei-icon_close"></i>
+              </div>
+  
+              <div class="site-logo">
+                <a href="index.html" class="logo">
+                  <img src="../static/assets/img/lo.png" alt="site logo" class="main-logo">
+                  <img src="../static/assets/img/lo.png" alt="site logo" class="sticky-logo">
+                </a>
+              </div>
+              <!-- /.site-logo -->
+  
+              <div class="menu-wrapper" data-top="992">
+                <ul class="site-main-menu">
+                  <li class="menu-item-has-children">
+                    <a href="index.html">Features</a>
+                    <ul class="sub-menu">
+                      <li><a href="index.html">Website Content</a></li>
+                      <li><a href="index-two.html">Blog Content</a></li>
+                      <li><a href="index-three.html">Facebook Ads</a></li>
+                      <li><a href="index-four.html">Applications</a></li>
+                      <li><a href="index-five.html">Image Converter</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="about.html">Blog</a></li>
+                  <li><a href="contact.html">Pricing</a></li>
+                  <li><a href="contact.html">Login</a></li>
+                </ul>
+                
+                <div class="nav-right">
+                  <a href="signup.html" class="nav-btn">Try It Free</a>
+                </div>								
+              </div>
+              <!-- /.menu-wrapper -->
+  
+            </nav><!-- /.site-nav -->
+          </div><!-- /.header-inner -->
+        </div><!-- /.container -->
+      </header><!-- /.site-header -->
+
+      <!--==========================-->
+      <!--=         Sign In         =-->
+      <!--==========================-->
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-12 pt-4 mt-4">
+              <h2 class="title copy-paste">Copy and paste your text</h2>
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <textarea type="text" placeholder="text"></textarea>
+            </div>
+            <div class="col-md-12 col-12 text-center">
+              <span>or</span>
+            </div>
+            <div class="col-md-12 col-12">
+              <span>Upload File</span>
+            </div>
+            <div class="col-md-12 col-12 pt-2">
+              <input type="file" name="image" />
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <button type="submit" class="pix-btn input-submit">Submit</button>
+            </div>
+
+            <div class="col-md-12 col-12 pt-5">
+              <h1 class="title">Text To Email Finder Result</h1>
+            </div>
+            <div class="col-md-12 col-12">
+              <ul class="list-group">
+                <li class="list-group-item-email">
+                  <h5>Emails</h5>
+                </li>
+                <li class="list-group-item-email">
+                  alaminaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com
+                </li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">
+                  alaminaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com
+                </li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+                <li class="list-group-item-email">alamin@gmail.com</li>
+              </ul>
+            </div>
+            <div class="col-md-12 col-12 pt-3">
+              <button type="submit" class="pix-btn text-mail-finder-btn">
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /#site -->
+
+    <!--=========================-->
+    <!--=        Footer         =-->
+    <!--=========================-->
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-inner wow pixFadeUp">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="widget footer-widget">
+                <h3 class="widget-title">Company</h3>
+
+                <ul class="footer-menu">
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Dashboard & Tool</a></li>
+                  <li><a href="#">Our Portfolio</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Get In Touch</a></li>
+                </ul>
+              </div>
+              <!-- /.widget footer-widget -->
+            </div>
+            <!-- /.col-lg-3 col-md-6 -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="widget footer-widget">
+                <h3 class="widget-title">Services</h3>
+
+                <ul class="footer-menu">
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Dashboard & Tool</a></li>
+                  <li><a href="#">Our Portfolio</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Get In Touch</a></li>
+                </ul>
+              </div>
+              <!-- /.widget footer-widget -->
+            </div>
+            <!-- /.col-lg-3 col-md-6 -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="widget footer-widget">
+                <h3 class="widget-title">Digital Experience</h3>
+
+                <ul class="footer-menu">
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Dashboard & Tool</a></li>
+                  <li><a href="#">Our Portfolio</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Get In Touch</a></li>
+                </ul>
+              </div>
+              <!-- /.widget footer-widget -->
+            </div>
+            <!-- /.col-lg-3 col-md-6 -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="widget footer-widget">
+                <h3 class="widget-title">Our Address</h3>
+
+                <p>Lavaca Street, Suite 24, Road Apt New York, USA</p>
+
+                <ul class="footer-social-link">
+                  <li>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.widget footer-widget -->
+            </div>
+            <!-- /.col-lg-3 col-md-6 -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.footer-inner -->
+
+        <div class="site-info">
+          <div class="copyright">
+            <p>
+              © 2020 All Rights Reserved Design by
+              <a href="http://www.pixelsigns.art" target="_blank">PixelSigns</a>
+            </p>
+          </div>
+
+          <ul class="site-info-menu">
+            <li><a href="#">Privacy & Policy.</a></li>
+            <li><a href="#">Faq.</a></li>
+            <li><a href="#">Terms.</a></li>
+          </ul>
+        </div>
+        <!-- /.site-info -->
+      </div>
+      <!-- /.container -->
+    </footer>
+    <!-- /#footer -->
+    <!-- Dependency Scripts -->
+    <script src="../static/dependencies/jquery/jquery.min.js"></script>
+    <script src="../static/dependencies/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/dependencies/swiper/js/swiper.min.js"></script>
+    <script src="../static/dependencies/jquery.appear/jquery.appear.js"></script>
+    <script src="../static/dependencies/wow/js/wow.min.js"></script>
+    <script src="../static/dependencies/countUp.js/countUp.min.js"></script>
+    <script src="../static/dependencies/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../static/dependencies/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js"></script>
+    <script src="../static/dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/dependencies/gmap3/js/gmap3.min.js"></script>
+    <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6"></script>
+ 
+    <!-- Site Scripts -->
+    <script src="../static/assets/js/header.js"></script>
+    <script src="../static/assets/js/app.js"></script>
+  </body>
+</html>

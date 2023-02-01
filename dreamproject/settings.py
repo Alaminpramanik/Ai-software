@@ -40,13 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    # 'rest_auth',
+    'ckeditor',
 
     #custom app
     'tools',
-    'user',
+    # 'user',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'dreamproject.urls'
 
@@ -69,28 +75,48 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect'
+
             ],
         },
     },
 ]
 
+REST_FRAMEWORK ={
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'core.pagination.CustomPageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+
 WSGI_APPLICATION = 'dreamproject.wsgi.application'
 
-AUTH_USER_MODEL="user.User"
+# AUTH_USER_MODEL="user.User"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': DB_ENGINE,
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'HOST': DB_HOST,
+#         'PORT': DB_PORT,
+#         'PASSWORD': DB_PASSWORD,
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': DB_ENGINE,
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
-        'PASSWORD': DB_PASSWORD,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -112,6 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -130,7 +157,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-HOME_DIR = os.path.realpath(os.path.join(BASE_DIR, '..'))
 
-STATIC_URL = '/django_static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'django_static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# HOME_DIR = os.path.realpath(os.path.join(BASE_DIR, '..'))
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+# STATIC_ROOT = 'staticfiles'
+# STATICFILES_STORAGE = 'stylish.storage.S3Storage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
